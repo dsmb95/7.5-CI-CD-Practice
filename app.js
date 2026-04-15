@@ -42,4 +42,18 @@ app.get('/available', (req, res) => {
   res.json(available)
 })
 
+app.post('/rooms', (req, res) => {
+  const { name, type, pricePerNight, available } = req.body;
+  const newRoom = {
+    id: rooms.length + 1,
+    name,
+    type,
+    pricePerNight,
+    available
+  }
+
+  rooms.push(newRoom);
+  res.status(201).json(newRoom);
+})
+
 module.exports = app
